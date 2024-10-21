@@ -1,6 +1,6 @@
 <x-Layouts.app>
     <main class="main-content px-4 py-8 md:flex-1 md:p-12 md:overflow-y-auto">
-        <livewire:counter/>
+        <livewire:reactive-input/>
         <h1 class="mb-8 text-3xl font-bold">Organizations</h1>
         <div class="flex items-center justify-between mb-6">
             <div class="flex items-center mr-4 w-full max-w-md">
