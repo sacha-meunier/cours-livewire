@@ -2,9 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\Account;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
-use App\Models\Account;
 use Livewire\WithPagination;
 
 class OrganizationsTable extends Component
@@ -13,9 +13,16 @@ class OrganizationsTable extends Component
 
     public $account;
 
+    public $search;
+
     public function mount()
     {
         $this->account = Account::whereName('Acme Corporation')->first();
+    }
+
+    public function updatedSearch()
+    {
+        $this->resetPage();
     }
 
     #[Computed]
@@ -23,6 +30,7 @@ class OrganizationsTable extends Component
     {
         return $this->account
             ->organizations()
+            ->filter(['search'=> $this->search])
             ->orderBy('name')
             ->paginate(10);
     }

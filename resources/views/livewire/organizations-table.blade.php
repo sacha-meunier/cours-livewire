@@ -2,14 +2,15 @@
     <h1 class="mb-8 text-3xl font-bold">Organizations</h1>
     <div class="flex items-center justify-between mb-6">
         <div class="flex items-center mr-4 w-full max-w-md">
-            <form class="flex w-full bg-white rounded shadow">
+            <form class="flex w-full bg-white rounded shadow" x-data="{searchButton:false}">
                 <button type="button"
                         class="focus:z-10 px-4 hover:bg-gray-100 border-r focus:border-white rounded-l focus:ring md:px-6">
                     <div class="flex items-baseline"><span class="hidden text-gray-700 md:inline">Filter</span>
                         <svg class="w-2 h-2 fill-gray-700 md:ml-2"
                              xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 961.243 599.998">
-                            <path d="M239.998 239.999L0 0h961.243L721.246 240c-131.999 132-240.28 240-240.624 239.999-.345-.001-108.625-108.001-240.624-240z"></path>
+                            <path
+                                d="M239.998 239.999L0 0h961.243L721.246 240c-131.999 132-240.28 240-240.624 239.999-.345-.001-108.625-108.001-240.624-240z"></path>
                         </svg>
                     </div>
                 </button>
@@ -17,11 +18,15 @@
                        autocomplete="off"
                        type="text"
                        name="search"
-                       placeholder="Name">
-                <button type="submit"
-                        class="focus:z-10 px-4 hover:bg-gray-100 border-r focus:border-white rounded-l focus:ring md:px-6">
-                    Search
-                </button>
+                       placeholder="Name"
+                       wire:model.live="search"
+                >
+                <template x-if="searchButton">
+                    <button type="submit"
+                            class="focus:z-10 px-4 hover:bg-gray-100 border-r focus:border-white rounded-l focus:ring md:px-6">
+                        Search
+                    </button>
+                </template>
             </form>
         </div>
         <a class="btn-indigo"
@@ -58,7 +63,8 @@
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  viewBox="0 0 20 20"
                                  class="block w-6 h-6 fill-gray-400">
-                                <polygon points="12.95 10.707 13.657 10 8 4.343 6.586 5.757 10.828 10 6.586 14.243 8 15.657 12.95 10.707"></polygon>
+                                <polygon
+                                    points="12.95 10.707 13.657 10 8 4.343 6.586 5.757 10.828 10 6.586 14.243 8 15.657 12.95 10.707"></polygon>
                             </svg>
                         </a></td>
                 </tr>
